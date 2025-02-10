@@ -1,11 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'scanning_model.dart';
 export 'scanning_model.dart';
 
@@ -85,8 +81,8 @@ class _ScanningWidgetState extends State<ScanningWidget> {
                 height: 170.0,
                 decoration: const BoxDecoration(),
                 child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      24.0, 24.0, 24.0, 24.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -155,7 +151,8 @@ class _ScanningWidgetState extends State<ScanningWidget> {
               Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     decoration: BoxDecoration(

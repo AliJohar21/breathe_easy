@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'onboarding_model.dart';
 export 'onboarding_model.dart';
 
@@ -51,7 +48,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(0.0),
@@ -67,7 +65,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(50.0),
@@ -98,7 +97,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                     ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 0.0),
                 child: Text(
                   'Monitor your breathing, sleep, and health insights effortlessly.',
                   style: FlutterFlowTheme.of(context).labelLarge.override(
