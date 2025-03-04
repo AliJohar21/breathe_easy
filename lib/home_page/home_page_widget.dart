@@ -1,3 +1,4 @@
+import 'package:breathe_easy/scanning/scanning_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -227,8 +228,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    if (BleService
+                                        .instance.connectedDevices.isNotEmpty) {
+                                      // Send start command to the first connected device.
+                                      await BleService.instance
+                                          .sendStartCommand(BleService
+                                              .instance.connectedDevices.first);
+                                    } else {
+                                      print(
+                                          'No connected device. Please connect first.');
+                                    }
                                   },
                                   text: 'Start Monitoring',
                                   options: FFButtonOptions(
@@ -240,7 +250,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     iconPadding:
                                         const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFFE0E3E7),
+                                    color: const Color(0xFF262D34),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .headlineLarge
                                         .override(

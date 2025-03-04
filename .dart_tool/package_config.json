@@ -8,6 +8,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "archive",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/archive-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "args",
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/args-2.6.0",
       "packageUri": "lib/",
@@ -54,6 +60,36 @@
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/cached_network_image_web-1.3.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "camera",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/camera-0.11.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "camera_android_camerax",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/camera_android_camerax-0.6.13",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "camera_avfoundation",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/camera_avfoundation-0.9.18+8",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "camera_platform_interface",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/camera_platform_interface-2.9.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "camera_web",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/camera_web-0.3.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "characters",
@@ -302,6 +338,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_foreground_task",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_foreground_task-8.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-4.0.0",
       "packageUri": "lib/",
@@ -318,6 +360,12 @@
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.20",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "flutter_reactive_ble",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_reactive_ble-5.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_shaders",
@@ -338,6 +386,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "flutter_zxing",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_zxing-1.8.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "font_awesome_flutter",
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/font_awesome_flutter-10.7.0",
       "packageUri": "lib/",
@@ -348,6 +402,12 @@
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/from_css_color-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "functional_data",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/functional_data-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "go_router",
@@ -414,6 +474,12 @@
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "image",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "image_picker",
@@ -608,6 +674,42 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "permission_handler",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler-11.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_android",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_android-12.0.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_apple",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_html",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_html-0.1.3+5",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "permission_handler_platform_interface",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_platform_interface-4.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "permission_handler_windows",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_windows-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "petitparser",
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/petitparser-6.0.2",
       "packageUri": "lib/",
@@ -626,10 +728,34 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "posix",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/posix-6.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "protobuf",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/protobuf-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "provider",
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "reactive_ble_mobile",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/reactive_ble_mobile-5.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "reactive_ble_platform_interface",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/reactive_ble_platform_interface-5.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "rfc_6901",
@@ -914,7 +1040,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2025-02-10T14:12:17.494657Z",
+  "generated": "2025-02-19T17:50:44.630114Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///C:/flutter",

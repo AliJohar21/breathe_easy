@@ -39,7 +39,13 @@ dependencies:
   firebase_storage_platform_interface: 5.1.33
   firebase_storage_web: 3.10.5
   flutter_animate: 4.5.0
+  
   flutter_blue_plus: 1.35.2
+  flutter_reactive_ble: 5.4.0
+  flutter_foreground_task: 8.17.0
+  permission_handler: 11.3.1
+  flutter_zxing: ^1.8.2
+
   flutter_cache_manager: 3.4.1
   flutter_plugin_android_lifecycle: 2.0.20
   font_awesome_flutter: 10.7.0
