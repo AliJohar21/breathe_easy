@@ -172,7 +172,7 @@ class BleService {
 }
 
 class ScanningWidget extends StatefulWidget {
-  const ScanningWidget({Key? key}) : super(key: key);
+  const ScanningWidget({super.key});
 
   @override
   State<ScanningWidget> createState() => _ScanningWidgetState();
@@ -242,7 +242,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
           child: Column(
             children: [
               // Top Section: Instructions
-              Container(
+              SizedBox(
                 width: MediaQuery.sizeOf(context).width,
                 height: 170.0,
                 child: Padding(
@@ -497,8 +497,8 @@ class _ScanningWidgetState extends State<ScanningWidget> {
 }
 
 /// A QR scanner screen using ReaderWidget from flutter_zxing.
-class QRScannerScreen extends StatelessWidget {
-  const QRScannerScreen({Key? key}) : super(key: key);
+/*class QRScannerScreen extends StatelessWidget {
+  const QRScannerScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -517,4 +517,4 @@ class QRScannerScreen extends StatelessWidget {
       ),
     );
   }
-}
+}*/
