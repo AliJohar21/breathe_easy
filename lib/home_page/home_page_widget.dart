@@ -1,3 +1,4 @@
+import 'package:breathe_easy/csvConvertion.dart';
 import 'package:breathe_easy/scanning/scanning_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -16,9 +17,10 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isStarted = false;
+
+  final CsvHelper csvHelper = CsvHelper(); // Add this line here
 
   @override
   void initState() {
@@ -226,58 +228,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             Align(
                               alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    if (BleService
-                                        .instance.connectedDevices.isNotEmpty) {
-                                      if (_isStarted) {
-                                        // Stop state -> switch to Start state
-                                        await BleService.instance
-                                            .sendStopCommand(BleService.instance
-                                                .connectedDevices.first);
-                                        setState(() {
-                                          _isStarted = false;
-                                        });
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (BleService.instance.connectedDevices
+                                          .isNotEmpty) {
+                                        if (_isStarted) {
+                                          // Stop state -> switch to Start state
+                                          await BleService.instance
+                                              .sendStopCommand(BleService
+                                                  .instance
+                                                  .connectedDevices
+                                                  .first);
+
+                                          // Save the CSV file automatically after stopping
+                                          final file =
+                                              await csvHelper.saveCsvFile();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                                content: Text(
+                                                    'CSV saved at ${file.path}')),
+                                          );
+
+                                          setState(() {
+                                            _isStarted = false;
+                                          });
+                                        } else {
+                                          // Start state -> switch to Stop state
+                                          await BleService.instance
+                                              .sendStartCommand(BleService
+                                                  .instance
+                                                  .connectedDevices
+                                                  .first);
+                                          setState(() {
+                                            _isStarted = true;
+                                          });
+                                        }
                                       } else {
-                                        // Start state -> switch to Stop state
-                                        await BleService.instance
-                                            .sendStartCommand(BleService
-                                                .instance
-                                                .connectedDevices
-                                                .first);
-                                        setState(() {
-                                          _isStarted = true;
-                                        });
+                                        print(
+                                            'No connected device. Please connect first.');
                                       }
-                                    } else {
-                                      print(
-                                          'No connected device. Please connect first.');
-                                    }
-                                  },
-                                  text: _isStarted ? 'Stop' : 'Start',
-                                  options: FFButtonOptions(
-                                    width: 150.0,
-                                    height: 150.0,
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                    iconPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFF262D34),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .headlineLarge
-                                        .override(
-                                          fontFamily: 'Inter Tight',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(80.0),
-                                  ),
-                                ),
-                              ),
+                                    },
+                                    text: _isStarted ? 'Stop' : 'Start',
+                                    options: FFButtonOptions(
+                                      width: 150.0,
+                                      height: 150.0,
+                                      color: const Color(0xFF262D34),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .override(
+                                            fontFamily: 'Inter Tight',
+                                          ),
+                                      borderRadius: BorderRadius.circular(80.0),
+                                    ),
+                                  )),
                             ),
                           ],
                         ),

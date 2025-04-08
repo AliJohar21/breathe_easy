@@ -46,7 +46,9 @@ dependencies:
   permission_handler: 11.3.1
   syncfusion_flutter_charts: 24.1.47
   flutter_zxing: ^1.8.2
-
+  path_provider: ^2.1.5
+  csv: ^6.0.0
+  
   flutter_cache_manager: 3.4.1
   flutter_plugin_android_lifecycle: 2.0.20
   font_awesome_flutter: 10.7.0
@@ -71,7 +73,6 @@ dependencies:
   json_path: 0.7.2
   mime_type: 1.0.0
   page_transition: 2.1.0
-  path_provider: 2.1.4
   path_provider_android: 2.2.10
   path_provider_foundation: 2.4.0
   path_provider_linux: 2.2.1

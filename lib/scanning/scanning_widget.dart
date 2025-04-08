@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'scanning_model.dart';
 export 'scanning_model.dart';
+import 'package:breathe_easy/csvConvertion.dart';
 
 /// Singleton BLE service that manages scanning, connection, and data reception.
 class BleService {
@@ -38,6 +39,9 @@ class BleService {
   StreamSubscription<DiscoveredDevice>? _scanSubscription;
   final Map<String, StreamSubscription> _connectionSubscriptions = {};
   StreamSubscription<List<int>>? _sensorDataSubscription;
+
+  // CSV helper instance
+  final CsvHelper csvHelper = CsvHelper();
 
   /// Start scanning for devices advertising the smart band service.
   void startScan() {
@@ -117,8 +121,7 @@ class BleService {
       characteristicId: sensorDataCharacteristicUuid,
       deviceId: device.id,
     );
-    _sensorDataSubscription =
-        _ble.subscribeToCharacteristic(characteristic).listen((data) {
+    _ble.subscribeToCharacteristic(characteristic).listen((data) async {
       debugPrint("Raw sensor data received: $data, length: ${data.length}");
       if (data.length >= 4) {
         try {
@@ -126,6 +129,10 @@ class BleService {
               ByteData.sublistView(Uint8List.fromList(data));
           final floatValue = byteData.getFloat32(0, Endian.little);
           sensorDataNotifier.value = floatValue.toStringAsFixed(2);
+
+          // Automatically log and, if necessary, save the sensor reading.
+          await csvHelper.addRow(DateTime.now(), floatValue);
+
           debugPrint("Converted sensor data: $floatValue");
         } catch (e) {
           debugPrint("Error parsing float: $e");
@@ -209,6 +216,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final BleService _bleService = BleService.instance;
+  CsvHelper csvHelper = CsvHelper(); // CSV helper instance
 
   @override
   void initState() {
