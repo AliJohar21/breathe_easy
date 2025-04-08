@@ -884,6 +884,18 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "syncfusion_flutter_charts",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_charts-24.1.47",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-24.2.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "synchronized",
       "rootUri": "file:///C:/Users/aliha/AppData/Local/Pub/Cache/hosted/pub.dev/synchronized-3.3.0+3",
       "packageUri": "lib/",
@@ -1040,7 +1052,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2025-02-19T17:50:44.630114Z",
+  "generated": "2025-04-07T19:55:54.238203Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///C:/flutter",

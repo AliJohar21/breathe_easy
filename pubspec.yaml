@@ -44,6 +44,7 @@ dependencies:
   flutter_reactive_ble: 5.4.0
   flutter_foreground_task: 8.17.0
   permission_handler: 11.3.1
+  syncfusion_flutter_charts: 24.1.47
   flutter_zxing: ^1.8.2
 
   flutter_cache_manager: 3.4.1

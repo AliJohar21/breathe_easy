@@ -18,6 +18,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _isStarted = false;
 
   @override
   void initState() {
@@ -231,16 +232,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   onPressed: () async {
                                     if (BleService
                                         .instance.connectedDevices.isNotEmpty) {
-                                      // Send start command to the first connected device.
-                                      await BleService.instance
-                                          .sendStartCommand(BleService
-                                              .instance.connectedDevices.first);
+                                      if (_isStarted) {
+                                        // Stop state -> switch to Start state
+                                        await BleService.instance
+                                            .sendStopCommand(BleService.instance
+                                                .connectedDevices.first);
+                                        setState(() {
+                                          _isStarted = false;
+                                        });
+                                      } else {
+                                        // Start state -> switch to Stop state
+                                        await BleService.instance
+                                            .sendStartCommand(BleService
+                                                .instance
+                                                .connectedDevices
+                                                .first);
+                                        setState(() {
+                                          _isStarted = true;
+                                        });
+                                      }
                                     } else {
                                       print(
                                           'No connected device. Please connect first.');
                                     }
                                   },
-                                  text: 'Start Monitoring',
+                                  text: _isStarted ? 'Stop' : 'Start',
                                   options: FFButtonOptions(
                                     width: 150.0,
                                     height: 150.0,

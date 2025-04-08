@@ -121,10 +121,15 @@ class BleService {
         _ble.subscribeToCharacteristic(characteristic).listen((data) {
       debugPrint("Raw sensor data received: $data, length: ${data.length}");
       if (data.length >= 4) {
-        final int sensorValue = ByteData.sublistView(Uint8List.fromList(data))
-            .getUint32(0, Endian.little);
-        sensorDataNotifier.value = sensorValue.toString();
-        debugPrint("Converted sensor data: $sensorValue");
+        try {
+          final ByteData byteData =
+              ByteData.sublistView(Uint8List.fromList(data));
+          final floatValue = byteData.getFloat32(0, Endian.little);
+          sensorDataNotifier.value = floatValue.toStringAsFixed(2);
+          debugPrint("Converted sensor data: $floatValue");
+        } catch (e) {
+          debugPrint("Error parsing float: $e");
+        }
       } else {
         debugPrint("Received sensor data is too short: $data");
       }
@@ -145,6 +150,27 @@ class BleService {
       debugPrint("Sent start command to device ${device.name}");
     } catch (error) {
       debugPrint("Error sending start command: $error");
+    }
+  }
+
+  /// Sends the stop command (a value of 0) to the connected device.
+  Future<void> sendStopCommand(DiscoveredDevice device) async {
+    final characteristic = QualifiedCharacteristic(
+      serviceId: smartBandServiceUuid,
+      characteristicId:
+          controlCharacteristicUuid, // Must match Arduino's write characteristic
+      deviceId: device.id,
+    );
+
+    try {
+      await _ble.writeCharacteristicWithoutResponse(
+        characteristic,
+        value: [0], // Sending byte 0 (STOP command)
+      );
+      debugPrint("Sent stop command to device ${device.name}");
+    } catch (error) {
+      debugPrint("Error sending stop command: $error");
+      rethrow; // Optional: propagate error to UI
     }
   }
 
@@ -497,7 +523,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
 }
 
 /// A QR scanner screen using ReaderWidget from flutter_zxing.
-/*class QRScannerScreen extends StatelessWidget {
+class QRScannerScreen extends StatelessWidget {
   const QRScannerScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -517,4 +543,4 @@ class _ScanningWidgetState extends State<ScanningWidget> {
       ),
     );
   }
-}*/
+}
