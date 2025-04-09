@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'home_page_model.dart';
+import 'package:breathe_easy/csvConvertion.dart';
 export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -235,33 +236,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       if (BleService.instance.connectedDevices
                                           .isNotEmpty) {
                                         if (_isStarted) {
-                                          // Stop state -> switch to Start state
+                                          // 🔴 STOP pressed
                                           await BleService.instance
-                                              .sendStopCommand(BleService
-                                                  .instance
-                                                  .connectedDevices
-                                                  .first);
-
-                                          // Save the CSV file automatically after stopping
-                                          final file =
-                                              await csvHelper.saveCsvFile();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                                content: Text(
-                                                    'CSV saved at ${file.path}')),
+                                              .sendStopCommand(
+                                            BleService.instance.connectedDevices
+                                                .first,
                                           );
 
                                           setState(() {
                                             _isStarted = false;
                                           });
+
+                                          // ✅ Print only the values collected after the last Start
+                                          final allData = BleService
+                                              .instance.csvHelper
+                                              .getAllData();
+                                          for (int i = 1;
+                                              i < allData.length;
+                                              i++) {
+                                            print(allData[i]
+                                                [1]); // Only print SensorValue
+                                          }
                                         } else {
-                                          // Start state -> switch to Stop state
+                                          // 🟢 START pressed
                                           await BleService.instance
-                                              .sendStartCommand(BleService
-                                                  .instance
-                                                  .connectedDevices
-                                                  .first);
+                                              .sendStartCommand(
+                                            BleService.instance.connectedDevices
+                                                .first,
+                                          );
+
+                                          // ✅ Clear old data before starting new session
+                                          BleService.instance.csvHelper.clear();
+
                                           setState(() {
                                             _isStarted = true;
                                           });

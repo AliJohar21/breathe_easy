@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:breathe_easy/csvConvertion.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:flutter_zxing/flutter_zxing.dart';
@@ -8,7 +9,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'scanning_model.dart';
 export 'scanning_model.dart';
-import 'package:breathe_easy/csvConvertion.dart';
 
 /// Singleton BLE service that manages scanning, connection, and data reception.
 class BleService {
@@ -17,6 +17,8 @@ class BleService {
 
   final FlutterReactiveBle _ble = FlutterReactiveBle();
 
+  /// Stores sensor values to later write into CSV
+  final List<String> recordedData = [];
   // UUIDs (must match your Arduino code)
   final Uuid smartBandServiceUuid =
       Uuid.parse("12345678-1234-5678-1234-56789abcdef0");
@@ -128,12 +130,13 @@ class BleService {
           final ByteData byteData =
               ByteData.sublistView(Uint8List.fromList(data));
           final floatValue = byteData.getFloat32(0, Endian.little);
-          sensorDataNotifier.value = floatValue.toStringAsFixed(2);
+          final formattedValue = floatValue.toStringAsFixed(2);
+          sensorDataNotifier.value = formattedValue;
 
-          // Automatically log and, if necessary, save the sensor reading.
-          await csvHelper.addRow(DateTime.now(), floatValue);
+          // Add to in-memory data collector
+          csvHelper.addRow(DateTime.now(), floatValue);
 
-          debugPrint("Converted sensor data: $floatValue");
+          debugPrint("Converted sensor data: $formattedValue");
         } catch (e) {
           debugPrint("Error parsing float: $e");
         }
@@ -216,7 +219,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final BleService _bleService = BleService.instance;
-  CsvHelper csvHelper = CsvHelper(); // CSV helper instance
+  final CsvHelper csvHelper = CsvHelper();
 
   @override
   void initState() {
