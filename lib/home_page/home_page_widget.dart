@@ -1,4 +1,5 @@
 import 'package:breathe_easy/csvConvertion.dart';
+import 'package:breathe_easy/onboarding/onboarding_widget.dart';
 import 'package:breathe_easy/scanning/scanning_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -312,10 +313,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                           child: const Text(
-                            'Perform API Action',
+                            'Show my Data',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18.0,
+                              fontSize: 20.0,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -621,8 +622,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           // Optional: Clear local app state or secure storage
 
                           // Navigate to login screen
-                          context.goNamedAuth('Login', context.mounted);
-                          // Replace 'login' with your actual route name
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const OnboardingWidget()),
+                          );
                         },
                         icon: const Icon(Icons.logout),
                         label: const Text('Logout'),
