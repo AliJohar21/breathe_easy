@@ -246,7 +246,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: AppBar(
+        /*appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
@@ -274,14 +274,14 @@ class _ScanningWidgetState extends State<ScanningWidget> {
           ),
           actions: const [],
           centerTitle: false,
-        ),
+        ),*/
         body: SingleChildScrollView(
           child: Column(
             children: [
               // Top Section: Instructions
               SizedBox(
                 width: MediaQuery.sizeOf(context).width,
-                height: 170.0,
+                height: 200.0,
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(
                       24.0, 24.0, 24.0, 24.0),
@@ -417,7 +417,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 10.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(15.0),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFFF3E0),
                       borderRadius: BorderRadius.circular(16.0),
@@ -481,7 +481,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
                 ),
               ),
               // Container to display received sensor data.
-              Align(
+              /*Align(
                 alignment: Alignment.center,
                 child: ValueListenableBuilder<String>(
                   valueListenable: _bleService.sensorDataNotifier,
@@ -501,7 +501,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
                     );
                   },
                 ),
-              ),
+              ),*/
             ].divide(const SizedBox(height: 20.0)),
           ),
         ),

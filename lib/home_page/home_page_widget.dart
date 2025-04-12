@@ -79,15 +79,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 0.0, 0.0),
+                                  0.0, 30.0, 0.0, 0.0),
                               child: Text(
-                                'Hi',
+                                DateTime.now().hour < 12
+                                    ? 'Good Morning!'
+                                    : 'Good Evening!',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .headlineLarge
                                     .override(
                                       fontFamily: 'Inter Tight',
-                                      fontSize: 60.0,
+                                      fontSize: 40.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -236,7 +238,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       if (BleService.instance.connectedDevices
                                           .isNotEmpty) {
                                         if (_isStarted) {
-                                          // 🔴 STOP pressed
+                                          //  STOP pressed
                                           await BleService.instance
                                               .sendStopCommand(
                                             BleService.instance.connectedDevices
@@ -247,7 +249,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             _isStarted = false;
                                           });
 
-                                          // ✅ Print only the values collected after the last Start
+                                          //  Print only the values collected after the last Start
                                           final allData = BleService
                                               .instance.csvHelper
                                               .getAllData();
@@ -258,14 +260,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 [1]); // Only print SensorValue
                                           }
                                         } else {
-                                          // 🟢 START pressed
+                                          //  START pressed
                                           await BleService.instance
                                               .sendStartCommand(
                                             BleService.instance.connectedDevices
                                                 .first,
                                           );
 
-                                          // ✅ Clear old data before starting new session
+                                          //  Clear old data before starting new session
                                           BleService.instance.csvHelper.clear();
 
                                           setState(() {
@@ -294,8 +296,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 0.0, horizontal: 24.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // TODO: Add API call functionality here
+                          },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize:
+                                const Size(double.infinity, 50), // Full width
+                            backgroundColor:
+                                const Color(0xFF4B39EF), // Purple-ish tone
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                          child: const Text(
+                            'Perform API Action',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
                       Container(
-                        height: 204.0,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).alternate,
                           borderRadius: BorderRadius.circular(18.0),
@@ -418,7 +446,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Apnea Episodes',
+                                          'Apnea index',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
                                               .override(
@@ -576,128 +604,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        elevation: 2.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24.0),
-                        ),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 16.0, 16.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'Recent Alerts',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: 'Inter Tight',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        const Icon(
-                                          Icons.warning,
-                                          color: Color(0xFFFFC107),
-                                          size: 24.0,
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Low Oxygen Alert',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                            ),
-                                          ],
-                                        ),
-                                      ].divide(const SizedBox(width: 12.0)),
-                                    ),
-                                    Icon(
-                                      Icons.chevron_right,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        const Icon(
-                                          Icons.favorite,
-                                          color: Color(0xFFFF5963),
-                                          size: 24.0,
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Irregular Heartbeat',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                            ),
-                                          ],
-                                        ),
-                                      ].divide(const SizedBox(width: 12.0)),
-                                    ),
-                                    Icon(
-                                      Icons.chevron_right,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                  ],
-                                ),
-                              ].divide(const SizedBox(height: 16.0)),
-                            ),
-                          ),
-                        ),
-                      ),
                       Text(
                         'This device is not a substitute for professional medical advice. Always consult your healthcare provider for medical concerns.',
                         textAlign: TextAlign.center,
@@ -707,7 +613,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               letterSpacing: 0.0,
                             ),
                       ),
-                    ].divide(const SizedBox(height: 24.0)),
+                      const SizedBox(height: 0.0),
+                      ElevatedButton.icon(
+                        onPressed: () async {
+                          // Optional: Clear any session/authentication tokens here
+                          // await FirebaseAuth.instance.signOut(); // Uncomment if using Firebase
+
+                          // Optional: Clear local app state or secure storage
+
+                          // Navigate to login screen
+                          context.goNamedAuth('Login', context.mounted);
+                          // Replace 'login' with your actual route name
+                        },
+                        icon: const Icon(Icons.logout),
+                        label: const Text('Logout'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.redAccent,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.w600),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 0.0),
+                    ].divide(const SizedBox(height: 20.0)),
                   ),
                 ),
               ),
