@@ -75,6 +75,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'BreatheEasy',
+      debugShowCheckedModeBanner: false, // <-- This removes the debug banner
+
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
