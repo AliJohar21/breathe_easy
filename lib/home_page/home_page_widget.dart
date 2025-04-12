@@ -623,7 +623,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                           // Navigate to login screen
                           context.goNamedAuth('Login', context.mounted);
-                          // Replace 'login' with your actual route name
                         },
                         icon: const Icon(Icons.logout),
                         label: const Text('Logout'),
